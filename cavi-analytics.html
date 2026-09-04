@@ -119,10 +119,72 @@
         </div>
       </section>
 
+
       <section>
         <div class="section-head">
           <div>
-            <h2>03 追问 CTR（按位置）</h2>
+            <h2>03 独立站明细（display_mode=site）</h2>
+            <p>筛选口径：<span class="element-en">display_mode=site</span>，时间窗 20260901 - 20260904，按 <span class="element-en">element_name</span> 聚合 3 天明细（曝光/点击用户数、事件数、点击 CTR、出现天数）。覆盖 44 个独立站埋点，含 AI 会话浮层、入口组件、卡片浏览、辅助功能等。本节为独立站数据全量快照，不随顶部日期筛选重算。</p>
+          </div>
+        </div>
+        <p class="formula">数据源：<b>download (35).csv</b>（Cavi AI 独立站细分看板 - 6 独立站数据全览）。汇总统计：曝光 241 用户 / 1,443 事件，点击 35 用户 / 106 事件。</p>
+        <div class="table-scroll">
+          <table>
+            <thead><tr><th>#</th><th>埋点 / element_name</th><th>曝光用户</th><th>曝光事件</th><th>点击用户</th><th>点击事件</th><th>点击 CTR</th><th>出现天数</th></tr></thead>
+            <tbody id="siteRows">
+<tr><td><span class="rank">1</span></td><td><span class='element-cn'>AI会话浮层引导追问按钮</span><span class="element-en">caviaix_session_layer_follow_up_btn</span></td><td>10</td><td>254</td><td>5</td><td>8</td><td><div class="ctr-cell"><span class="ctr-bar" style="width:50.00%"></span><span class="ctr-text">50.00%</span></div></td><td>3</td></tr>
+<tr><td><span class="rank">2</span></td><td><span class='element-cn'>AI会话浮层Cavi词云标签</span><span class="element-en">caviaix_session_layer_wordclouds</span></td><td>26</td><td>228</td><td>2</td><td>2</td><td><div class="ctr-cell"><span class="ctr-bar" style="width:7.69%"></span><span class="ctr-text">7.69%</span></div></td><td>3</td></tr>
+<tr><td><span class="rank">3</span></td><td><span class='element-cn'>AI会话浮层卡片</span><span class="element-en">caviaix_session_layer_solution_item</span></td><td>8</td><td>171</td><td>0</td><td>0</td><td><div class="ctr-cell"><span class="ctr-bar" style="width:0.00%"></span><span class="ctr-text">0.00%</span></div></td><td>3</td></tr>
+<tr><td><span class="rank">4</span></td><td><span class='element-cn'>AI会话浮层Cavi能力标签</span><span class="element-en">caviaix_session_layer_can</span></td><td>21</td><td>149</td><td>0</td><td>0</td><td><div class="ctr-cell"><span class="ctr-bar" style="width:0.00%"></span><span class="ctr-text">0.00%</span></div></td><td>3</td></tr>
+<tr><td><span class="rank">5</span></td><td><span class='element-cn'>消息卡片中品牌logo</span><span class="element-en">caviaix_oem_result_oemlogo</span></td><td>10</td><td>97</td><td>1</td><td>1</td><td><div class="ctr-cell"><span class="ctr-bar" style="width:10.00%"></span><span class="ctr-text">10.00%</span></div></td><td>3</td></tr>
+<tr><td><span class="rank">6</span></td><td><span class='element-cn'>点赞/点踩区域</span><span class="element-en">caviaix_likeorno_layer_option_btn</span></td><td>10</td><td>73</td><td>0</td><td>0</td><td><div class="ctr-cell"><span class="ctr-bar" style="width:0.00%"></span><span class="ctr-text">0.00%</span></div></td><td>3</td></tr>
+<tr><td><span class="rank">7</span></td><td><span class='element-cn'>PC 顶导 AI 入口</span><span class="element-en">caviaix_entry_nav_ai</span></td><td>11</td><td>65</td><td>4</td><td>12</td><td><div class="ctr-cell"><span class="ctr-bar" style="width:36.36%"></span><span class="ctr-text">36.36%</span></div></td><td>3</td></tr>
+<tr><td><span class="rank">8</span></td><td><span class='element-cn'>选车推荐按钮</span><span class="element-en">caviaix_session_layer_sugeridos</span></td><td>25</td><td>52</td><td>1</td><td>1</td><td><div class="ctr-cell"><span class="ctr-bar" style="width:4.00%"></span><span class="ctr-text">4.00%</span></div></td><td>3</td></tr>
+<tr><td><span class="rank">9</span></td><td><span class='element-cn'>预审按钮</span><span class="element-en">caviaix_session_layer_finance</span></td><td>25</td><td>51</td><td>0</td><td>0</td><td><div class="ctr-cell"><span class="ctr-bar" style="width:0.00%"></span><span class="ctr-text">0.00%</span></div></td><td>3</td></tr>
+<tr><td><span class="rank">10</span></td><td><span class='element-cn'>停止生成按钮</span><span class="element-en">caviaix_stop_generation</span></td><td>10</td><td>48</td><td>0</td><td>0</td><td><div class="ctr-cell"><span class="ctr-bar" style="width:0.00%"></span><span class="ctr-text">0.00%</span></div></td><td>3</td></tr>
+<tr><td><span class="rank">11</span></td><td><span class='element-cn'>咨询专家按钮</span><span class="element-en">caviaix_session_layer_experto</span></td><td>14</td><td>38</td><td>0</td><td>0</td><td><div class="ctr-cell"><span class="ctr-bar" style="width:0.00%"></span><span class="ctr-text">0.00%</span></div></td><td>3</td></tr>
+<tr><td><span class="rank">12</span></td><td><span class='element-cn'>车系卡片</span><span class="element-en">series-card</span></td><td>6</td><td>31</td><td>2</td><td>3</td><td><div class="ctr-cell"><span class="ctr-bar" style="width:33.33%"></span><span class="ctr-text">33.33%</span></div></td><td>3</td></tr>
+<tr><td><span class="rank">13</span></td><td><span class='element-cn'>WhatsApp 入口</span><span class="element-en">WhatsApp</span></td><td>6</td><td>24</td><td>0</td><td>0</td><td><div class="ctr-cell"><span class="ctr-bar" style="width:0.00%"></span><span class="ctr-text">0.00%</span></div></td><td>3</td></tr>
+<tr><td><span class="rank">14</span></td><td><span class='element-cn'>悬浮 AI 入口</span><span class="element-en">caviaix_entry_fab</span></td><td>7</td><td>24</td><td>1</td><td>2</td><td><div class="ctr-cell"><span class="ctr-bar" style="width:14.29%"></span><span class="ctr-text">14.29%</span></div></td><td>3</td></tr>
+<tr><td><span class="rank">15</span></td><td><span class='element-cn'>悬浮 AI 气泡</span><span class="element-en">caviaix_entry_fab_bubble</span></td><td>7</td><td>24</td><td>0</td><td>0</td><td><div class="ctr-cell"><span class="ctr-bar" style="width:0.00%"></span><span class="ctr-text">0.00%</span></div></td><td>3</td></tr>
+<tr><td><span class="rank">16</span></td><td><span class='element-cn'>推荐车系</span><span class="element-en">recommendedseries</span></td><td>4</td><td>23</td><td>0</td><td>0</td><td><div class="ctr-cell"><span class="ctr-bar" style="width:0.00%"></span><span class="ctr-text">0.00%</span></div></td><td>3</td></tr>
+<tr><td><span class="rank">17</span></td><td><span class='element-cn'>消息卡片OEM banner</span><span class="element-en">caviaix_oem_result_oembanner</span></td><td>6</td><td>22</td><td>0</td><td>0</td><td><div class="ctr-cell"><span class="ctr-bar" style="width:0.00%"></span><span class="ctr-text">0.00%</span></div></td><td>3</td></tr>
+<tr><td><span class="rank">18</span></td><td><span class='element-cn'>横幅</span><span class="element-en">banner</span></td><td>4</td><td>14</td><td>0</td><td>0</td><td><div class="ctr-cell"><span class="ctr-bar" style="width:0.00%"></span><span class="ctr-text">0.00%</span></div></td><td>2</td></tr>
+<tr><td><span class="rank">19</span></td><td><span class='element-cn'>申请贷款按钮</span><span class="element-en">apply_loan</span></td><td>2</td><td>13</td><td>1</td><td>3</td><td><div class="ctr-cell"><span class="ctr-bar" style="width:50.00%"></span><span class="ctr-text">50.00%</span></div></td><td>2</td></tr>
+<tr><td><span class="rank">20</span></td><td><span class='element-cn'>心智横幅</span><span class="element-en">mindsetbanner</span></td><td>2</td><td>5</td><td>0</td><td>0</td><td><div class="ctr-cell"><span class="ctr-bar" style="width:0.00%"></span><span class="ctr-text">0.00%</span></div></td><td>1</td></tr>
+<tr><td><span class="rank">21</span></td><td><span class='element-cn'>底部 AI 入口</span><span class="element-en">caviaix_entry_bottom_bar</span></td><td>4</td><td>4</td><td>1</td><td>1</td><td><div class="ctr-cell"><span class="ctr-bar" style="width:25.00%"></span><span class="ctr-text">25.00%</span></div></td><td>3</td></tr>
+<tr><td><span class="rank">22</span></td><td><span class='element-cn'>分期方案</span><span class="element-en">installment_plan</span></td><td>1</td><td>4</td><td>0</td><td>0</td><td><div class="ctr-cell"><span class="ctr-bar" style="width:0.00%"></span><span class="ctr-text">0.00%</span></div></td><td>1</td></tr>
+<tr><td><span class="rank">23</span></td><td><span class='element-cn'>收藏车系按钮</span><span class="element-en">add_series_favorite_button</span></td><td>2</td><td>3</td><td>0</td><td>0</td><td><div class="ctr-cell"><span class="ctr-bar" style="width:0.00%"></span><span class="ctr-text">0.00%</span></div></td><td>2</td></tr>
+<tr><td><span class="rank">24</span></td><td><span class='element-cn'>车型价格入口</span><span class="element-en">cavaiaix_series_price_entry</span></td><td>2</td><td>3</td><td>0</td><td>0</td><td><div class="ctr-cell"><span class="ctr-bar" style="width:0.00%"></span><span class="ctr-text">0.00%</span></div></td><td>2</td></tr>
+<tr><td><span class="rank">25</span></td><td><span class='element-cn'>消息选项按钮</span><span class="element-en">caviaix_session_layer_option_btn</span></td><td>2</td><td>3</td><td>2</td><td>3</td><td><div class="ctr-cell"><span class="ctr-bar" style="width:100.00%"></span><span class="ctr-text">100.00%</span></div></td><td>2</td></tr>
+<tr><td><span class="rank">26</span></td><td><span class='element-cn'>我的收藏按钮</span><span class="element-en">my_favorites_button</span></td><td>2</td><td>3</td><td>0</td><td>0</td><td><div class="ctr-cell"><span class="ctr-bar" style="width:0.00%"></span><span class="ctr-text">0.00%</span></div></td><td>2</td></tr>
+<tr><td><span class="rank">27</span></td><td><span class='element-cn'>桌面添加横幅</span><span class="element-en">add_desktop_banner</span></td><td>2</td><td>2</td><td>0</td><td>0</td><td><div class="ctr-cell"><span class="ctr-bar" style="width:0.00%"></span><span class="ctr-text">0.00%</span></div></td><td>2</td></tr>
+<tr><td><span class="rank">28</span></td><td><span class='element-cn'>排名</span><span class="element-en">rank</span></td><td>1</td><td>2</td><td>0</td><td>0</td><td><div class="ctr-cell"><span class="ctr-bar" style="width:0.00%"></span><span class="ctr-text">0.00%</span></div></td><td>1</td></tr>
+<tr><td><span class="rank">29</span></td><td><span class='element-cn'>口碑分</span><span class="element-en">reputation_score</span></td><td>1</td><td>2</td><td>0</td><td>0</td><td><div class="ctr-cell"><span class="ctr-bar" style="width:0.00%"></span><span class="ctr-text">0.00%</span></div></td><td>1</td></tr>
+<tr><td><span class="rank">30</span></td><td><span class='element-cn'>对比卡片</span><span class="element-en">compare-card</span></td><td>1</td><td>2</td><td>0</td><td>0</td><td><div class="ctr-cell"><span class="ctr-bar" style="width:0.00%"></span><span class="ctr-text">0.00%</span></div></td><td>1</td></tr>
+<tr><td><span class="rank">31</span></td><td><span class='element-cn'>登录弹层</span><span class="element-en">login_modal</span></td><td>2</td><td>2</td><td>0</td><td>0</td><td><div class="ctr-cell"><span class="ctr-bar" style="width:0.00%"></span><span class="ctr-text">0.00%</span></div></td><td>2</td></tr>
+<tr><td><span class="rank">32</span></td><td><span class='element-cn'>Cookie 横幅</span><span class="element-en">cookie_banner</span></td><td>1</td><td>1</td><td>0</td><td>0</td><td><div class="ctr-cell"><span class="ctr-bar" style="width:0.00%"></span><span class="ctr-text">0.00%</span></div></td><td>1</td></tr>
+<tr><td><span class="rank">33</span></td><td><span class='element-cn'>入口模块标题</span><span class="element-en">caviaix_entry_module_title</span></td><td>1</td><td>1</td><td>0</td><td>0</td><td><div class="ctr-cell"><span class="ctr-bar" style="width:0.00%"></span><span class="ctr-text">0.00%</span></div></td><td>1</td></tr>
+<tr><td><span class="rank">34</span></td><td><span class='element-cn'>预审申请按钮</span><span class="element-en">caviaix_pre_approval_apply_btn</span></td><td>1</td><td>1</td><td>0</td><td>0</td><td><div class="ctr-cell"><span class="ctr-bar" style="width:0.00%"></span><span class="ctr-text">0.00%</span></div></td><td>1</td></tr>
+<tr><td><span class="rank">35</span></td><td><span class='element-cn'>更多推荐车系</span><span class="element-en">more_recommended_series</span></td><td>1</td><td>1</td><td>0</td><td>0</td><td><div class="ctr-cell"><span class="ctr-bar" style="width:0.00%"></span><span class="ctr-text">0.00%</span></div></td><td>1</td></tr>
+<tr><td><span class="rank">36</span></td><td><span class='element-cn'>车系口碑</span><span class="element-en">seriesReputation</span></td><td>1</td><td>1</td><td>0</td><td>0</td><td><div class="ctr-cell"><span class="ctr-bar" style="width:0.00%"></span><span class="ctr-text">0.00%</span></div></td><td>1</td></tr>
+<tr><td><span class="rank">37</span></td><td><span class='element-cn'>试驾按钮</span><span class="element-en">testdrive_button</span></td><td>1</td><td>1</td><td>0</td><td>0</td><td><div class="ctr-cell"><span class="ctr-bar" style="width:0.00%"></span><span class="ctr-text">0.00%</span></div></td><td>1</td></tr>
+<tr><td><span class="rank">38</span></td><td><span class='element-cn'>车辆成本卡片</span><span class="element-en">vehicle_cost_card</span></td><td>1</td><td>1</td><td>0</td><td>0</td><td><div class="ctr-cell"><span class="ctr-bar" style="width:0.00%"></span><span class="ctr-text">0.00%</span></div></td><td>1</td></tr>
+<tr><td><span class="rank">39</span></td><td><span class='element-cn'>会话浮层输入框</span><span class="element-en">caviaix_session_layer_input_box</span></td><td>0</td><td>0</td><td>7</td><td>59</td><td><span class="muted">仅有点击</span></td><td>3</td></tr>
+<tr><td><span class="rank">40</span></td><td><span class='element-cn'>会话浮层发送按钮</span><span class="element-en">caviaix_session_layer_send_btn</span></td><td>0</td><td>0</td><td>4</td><td>6</td><td><span class="muted">仅有点击</span></td><td>2</td></tr>
+<tr><td><span class="rank">41</span></td><td><span class='element-cn'>Cookie 关闭按钮</span><span class="element-en">cookie_btn_close</span></td><td>0</td><td>0</td><td>1</td><td>1</td><td><span class="muted">仅有点击</span></td><td>1</td></tr>
+<tr><td><span class="rank">42</span></td><td><span class='element-cn'>悬浮 AI 气泡关闭</span><span class="element-en">caviaix_entry_fab_bubble_close</span></td><td>0</td><td>0</td><td>1</td><td>2</td><td><span class="muted">仅有点击</span></td><td>1</td></tr>
+<tr><td><span class="rank">43</span></td><td><span class='element-cn'>登录验证码输入</span><span class="element-en">login_code_input</span></td><td>0</td><td>0</td><td>1</td><td>1</td><td><span class="muted">仅有点击</span></td><td>1</td></tr>
+<tr><td><span class="rank">44</span></td><td><span class='element-cn'>登录发送按钮</span><span class="element-en">login_send_button</span></td><td>0</td><td>0</td><td>1</td><td>1</td><td><span class="muted">仅有点击</span></td><td>1</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section>
+        <div class="section-head">
+          <div>
+            <h2>04 追问 CTR（按位置）</h2>
             <p>筛选口径：<span class="element-en">element_name=caviaix_session_layer_follow_up_btn</span>。页面按 element_position 汇总展示；tag_name 明细保留在内嵌数据里，不作为主表拆分维度。</p>
           </div>
         </div>
@@ -141,7 +203,7 @@
       <section>
         <div class="section-head">
           <div>
-            <h2>04 组件入口展示形式分布</h2>
+            <h2>05 组件入口展示形式分布</h2>
             <p>筛选口径：<span class="element-en">element_name=caviaix_fullScreen_entry</span>。这张表能回答组件入口在默认组件形态和宽屏形态下的曝光、点击分布；当前导出没有 site，因此不能单独代表独立站。这里不再拆 type，因为组件入口场景下 type 区分价值较低。</p>
           </div>
         </div>
@@ -158,7 +220,7 @@
       <section>
         <div class="section-head">
           <div>
-            <h2>05 点赞 / 点踩 CTR</h2>
+            <h2>06 点赞 / 点踩 CTR</h2>
             <p>点赞、点踩点击分别用点赞点踩区域曝光 <span class="element-en">caviaix_likeorno_layer_option_btn</span> 做分母。点赞/点踩互动 CTR：<span id="metricLike">0.28%</span>。</p>
           </div>
         </div>
@@ -174,7 +236,7 @@
       <section>
         <div class="section-head">
           <div>
-            <h2>06 详细：所有按钮 CTR（含特殊曝光分母）</h2>
+            <h2>07 详细：所有按钮 CTR（含特殊曝光分母）</h2>
             <p>中文名称来自参数表“埋点”列。分母为“同名曝光”表示 click 和 view_item 使用同一个 element_name；否则展示实际使用的曝光 element_name。</p>
           </div>
           <div class="search-wrap">
