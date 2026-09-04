@@ -152,7 +152,7 @@
         <div class="section-head">
           <div>
             <h2>04 独立站数据分析</h2>
-            <p>第一张表保留原来的组件入口 display_mode 明细；第二张表按每日总用户口径拆出 site、wide 和其他形态的用户占比，并按用户数降序排列。</p>
+            <p>第一张表保留原来的组件入口 display_mode 明细；第二张表按每日总用户口径拆出 site、wide 和空白（主流量）的用户占比，并按用户数降序排列。</p>
           </div>
         </div>
         <div class="table-scroll">
@@ -166,13 +166,13 @@
         <div class="section-head subsection-head">
           <div>
             <h2>展示形态用户占比</h2>
-            <p>每日总用户来自 <span class="pill">download (38).csv</span>（9/3 已按 <span class="pill">download (39).csv</span> 更新为 4,390）；site / wide 来自 <span class="pill">download (36).csv</span>。其他形态 = 每日总用户 - site - wide。</p>
+            <p>每日总用户来自 <span class="pill">download (38).csv</span>（9/3 已按 <span class="pill">download (39).csv</span> 更新为 4,390）；site / wide 来自 <span class="pill">download (36).csv</span>。空白 = 每日总用户 - site - wide（主流量，display_mode 参数未传）。</p>
           </div>
         </div>
         <div class="table-scroll">
           <table>
             <thead><tr><th>#</th><th>展示形态</th><th>用户数</th><th>占比</th></tr></thead>
-            <tbody id="displayModeShareRows"><tr><td><span class='rank'>1</span></td><td>其他形态</td><td>119,996</td><td>99.97%</td></tr>
+            <tbody id="displayModeShareRows"><tr><td><span class='rank'>1</span></td><td>空白</td><td>119,996</td><td>99.97%</td></tr>
 <tr><td><span class='rank'>2</span></td><td>site</td><td>26</td><td>0.02%</td></tr>
 <tr><td><span class='rank'>3</span></td><td>wide</td><td>14</td><td>0.01%</td></tr></tbody>
           </table>
@@ -439,7 +439,7 @@
       const wideUsers = rows.reduce((sum, row) => sum + Number(row.wide_users || 0), 0);
       const otherUsers = Math.max(totalUsers - siteUsers - wideUsers, 0);
       const summaryRows = [
-        { display_mode: '其他形态', users: otherUsers, share: totalUsers ? otherUsers / totalUsers : null },
+        { display_mode: '空白', users: otherUsers, share: totalUsers ? otherUsers / totalUsers : null },
         { display_mode: 'site', users: siteUsers, share: totalUsers ? siteUsers / totalUsers : null },
         { display_mode: 'wide', users: wideUsers, share: totalUsers ? wideUsers / totalUsers : null }
       ].sort((a, b) => Number(b.users || 0) - Number(a.users || 0) || a.display_mode.localeCompare(b.display_mode));
