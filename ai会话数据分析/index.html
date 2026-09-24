@@ -259,7 +259,7 @@
     <div class="ov" id="overviewCards">
       <div class="stat"><div class="n" data-key="users">3,592</div><div class="k">使用AI用户数</div><div class="d" data-note="users">线上看板 09-14~09-20 · 使用AI用户数</div></div>
       <div class="stat"><div class="n" data-key="messages">27.86%</div><div class="k">2轮及以上用户占比</div><div class="d" data-note="messages">线上看板 09-14~09-20 · 2V2用户 / 使用AI用户</div></div>
-      <div class="stat"><div class="n" data-key="bounce">72.14%</div><div class="k">AI跳出率</div><div class="d" data-note="bounce">1 - 2轮及以上用户占比 · 09-14~09-20</div></div>
+      <div class="stat"><div class="n" data-key="bounce">72.14%</div><div class="k">AI跳出率</div><div class="d" data-note="bounce">1轮及以下用户占比 · 09-14~09-20</div></div>
       <div class="stat"><div class="n" data-key="finance">43.2%</div><div class="k">金融意图占比</div><div class="d" data-note="finance">2,454 / 5,676 消息（业务归类）</div></div>
       <div class="stat"><div class="n" data-key="leadHook">32</div><div class="k">真实线索数</div><div class="d" data-note="leadHook">主线索表记录 · 09-14~09-20</div></div>
     </div>
@@ -329,7 +329,7 @@
         <tr><td style="text-align:left">对话解决率（UUID真实线索）</td><td class="hl">25 / 3,525（0.71%）</td><td>主线索表 UUID 匹配到的线索用户 / AI 会话去重用户。</td><td><span class="badge good">已更新</span></td></tr>
         <tr><td style="text-align:left">卡片触达后解决率</td><td class="hl">0.70%</td><td>卡片触达用户中，UUID 出现在主线索表的用户占比。</td><td><span class="badge good">已更新</span></td></tr>
         <tr><td style="text-align:left">多轮对话完成率</td><td class="hl">910 / 3,806（23.9%）</td><td>同一会话内用户有效提问 ≥2 次。</td><td><span class="badge good">已更新</span></td></tr>
-        <tr><td style="text-align:left">AI跳出率</td><td class="hl">72.14%</td><td>1 - 2轮及以上用户占比（27.86%）；包含未达到2轮的用户。</td><td><span class="badge good">已更新</span></td></tr>
+        <tr><td style="text-align:left">AI跳出率</td><td class="hl">72.14%</td><td>1轮及以下用户占比，即 1 - 2轮及以上用户占比（27.86%）。</td><td><span class="badge good">已更新</span></td></tr>
         <tr><td style="text-align:left">点踩用户数</td><td class="hl">6 人</td><td>点赞点踩 CSV 中的点踩按钮事件，按 device_id 去重。</td><td><span class="badge good">已更新</span></td></tr>
       </tbody>
     </table></div>
@@ -353,7 +353,7 @@
     var fill=document.querySelectorAll('.fill, .ff');
     var run=function(){fill.forEach(function(x){x.style.width=x.getAttribute('data-w')+'%'})};
     if(window.requestAnimationFrame){requestAnimationFrame(function(){requestAnimationFrame(run)})}else{run()}
-    var overviewData={"current": {"users": ["3,592", "线上看板 09-14~09-20 · 使用AI用户数"], "messages": ["27.86%", "线上看板 09-14~09-20 · 2V2用户 / 使用AI用户"], "bounce": ["72.14%", "1 - 2轮及以上用户占比 · 09-14~09-20"], "finance": ["43.2%", "2,454 / 5,676 消息（业务归类）"], "leadHook": ["32", "主线索表记录 · 09-14~09-20"]}, "previous": {"users": ["9,007", "线上看板 09-07~09-13 · 使用AI用户数"], "messages": ["23.36%", "线上看板 09-07~09-13 · 2V2用户 / 使用AI用户"], "bounce": ["76.64%", "1 - 2轮及以上用户占比 · 09-07~09-13"], "finance": ["22.3%", "2,931 / 13,168 消息（业务归类）"], "leadHook": ["43", "主线索表记录 · 09-07~09-13"]}, "total": {"users": ["12,599", "线上看板 09-07~09-20 · 使用AI用户数"], "messages": ["24.11%", "线上看板 09-07~09-20 · 2V2用户 / 使用AI用户"], "bounce": ["75.89%", "1 - 2轮及以上用户占比 · 09-07~09-20"], "finance": ["15.6%", "2,931 / 18,844 消息（业务归类）"], "leadHook": ["75", "主线索表记录 · 09-07~09-20"]}};
+    var overviewData={"current": {"users": ["3,592", "线上看板 09-14~09-20 · 使用AI用户数"], "messages": ["27.86%", "线上看板 09-14~09-20 · 2V2用户 / 使用AI用户"], "bounce": ["72.14%", "1轮及以下用户占比 · 09-14~09-20"], "finance": ["43.2%", "2,454 / 5,676 消息（业务归类）"], "leadHook": ["32", "主线索表记录 · 09-14~09-20"]}, "previous": {"users": ["9,007", "线上看板 09-07~09-13 · 使用AI用户数"], "messages": ["23.36%", "线上看板 09-07~09-13 · 2V2用户 / 使用AI用户"], "bounce": ["76.64%", "1轮及以下用户占比 · 09-07~09-13"], "finance": ["22.3%", "2,931 / 13,168 消息（业务归类）"], "leadHook": ["43", "主线索表记录 · 09-07~09-13"]}, "total": {"users": ["12,599", "线上看板 09-07~09-20 · 使用AI用户数"], "messages": ["24.11%", "线上看板 09-07~09-20 · 2V2用户 / 使用AI用户"], "bounce": ["75.89%", "1轮及以下用户占比 · 09-07~09-20"], "finance": ["15.6%", "2,931 / 18,844 消息（业务归类）"], "leadHook": ["75", "主线索表记录 · 09-07~09-20"]}};
     function esc(s){return String(s).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]})}
     function fmtNum(n){return String(n).replace(/\B(?=(\d{3})+(?!\d))/g,',')}
     var tabs=document.getElementById('overviewTabs');
