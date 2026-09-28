@@ -62,6 +62,9 @@
   function short(day) { return iso(day).slice(5); }
   function rowLabel(period) { return short(period.start) + '~' + short(period.end); }
   function fullLabel(period) { return iso(period.start) + ' 至 ' + iso(period.end); }
+  function mergeOtherIntoFinanceForPeriod(period) {
+    return iso(period.start) === '2026-09-14' && iso(period.end) === '2026-09-20';
+  }
 
   async function rowsFromFile(file) {
     var workbook = XLSX.read(await file.arrayBuffer(), { type: 'array', cellDates: true });
@@ -260,8 +263,8 @@
     requireColumns(secondSessionRows, sessionRequired, files[1].name);
     requireColumns(firstLeadRows, leadRequired, files[2].name);
     requireColumns(secondLeadRows, leadRequired, files[3].name);
-    var first = analyzeSession(firstSessionRows, firstPeriod, false);
-    var second = analyzeSession(secondSessionRows, secondPeriod, true);
+    var first = analyzeSession(firstSessionRows, firstPeriod, mergeOtherIntoFinanceForPeriod(firstPeriod));
+    var second = analyzeSession(secondSessionRows, secondPeriod, mergeOtherIntoFinanceForPeriod(secondPeriod));
     var firstLeads = analyzeLeads(firstLeadRows, firstPeriod, first);
     var secondLeads = analyzeLeads(secondLeadRows, secondPeriod, second);
     var combined = analyzeSession(first.rows.concat(second.rows), { start: firstPeriod.start, end: secondPeriod.end }, false);
