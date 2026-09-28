@@ -1,6 +1,6 @@
 {
-  "version": 4,
-  "createdAt": "2026-09-28T08:29:09.421Z",
+  "version": 5,
+  "createdAt": "2026-09-28T09:29:52.978Z",
   "files": [
     "2026-09-14至2026-09-21_AI会话记录_5722.xlsx",
     "2026-09-21至2026-09-27_AI会话记录_833.xlsx",
@@ -88,68 +88,6 @@
       [
         "价格/报价/库存/优惠",
         112
-      ]
-    ],
-    "questions": [
-      [
-        "Ver planes de compra de las 6 versiones para Nissan Versa",
-        556
-      ],
-      [
-        "Analiza las ventajas y los principales atributos del MG MG5",
-        424
-      ],
-      [
-        "Ver planes de compra de las 8 versiones para Kia K3 Sedán",
-        226
-      ],
-      [
-        "Ver planes de compra de las 3 versiones para Chevrolet Aveo Sedán",
-        222
-      ],
-      [
-        "¿Qué SUVs de la lista cuestan menos de $5,000?",
-        217
-      ],
-      [
-        "¿Cuál de los 3 primeros autos me conviene más?",
-        208
-      ],
-      [
-        "¿Qué sedán del ranking me conviene?",
-        174
-      ],
-      [
-        "Ver planes de compra de las 4 versiones para Volkswagen Virtus",
-        172
-      ],
-      [
-        "Analiza las ventajas y los principales atributos del Changan EADO PLUS IDD",
-        153
-      ],
-      [
-        "Analiza las ventajas y los principales atributos del Changan ALSVIN",
-        146
-      ],
-      [
-        "Ver planes de compra de las 5 versiones para Toyota Yaris Sedán",
-        115
-      ],
-      [
-        "Ver planes de compra de las 4 versiones para MG MG5",
-        113
-      ],
-      [
-        "Ver planes de compra de las 6 versiones para Mazda 2 Sedán",
-        108
-      ],
-      [
-        "¿Cuál es la mensualidad más baja para el MG MG5?",
-        97
-      ],
-      [
-        "¿Cuál es la mensualidad más baja para el Changan EADO PLUS?",
-        89
       ]
     ],
     "brands": [
@@ -413,68 +351,6 @@
         210
       ]
     ],
-    "questions": [
-      [
-        "Ver planes de compra de las 6 versiones para Nissan Versa",
-        1333
-      ],
-      [
-        "Analiza las ventajas y los principales atributos del MG MG5",
-        1104
-      ],
-      [
-        "Ver planes de compra de las 8 versiones para Kia K3 Sedán",
-        674
-      ],
-      [
-        "Analiza las ventajas y los principales atributos del Changan EADO PLUS IDD",
-        518
-      ],
-      [
-        "¿Cuál de los 3 primeros autos me conviene más?",
-        484
-      ],
-      [
-        "Ver planes de compra de las 3 versiones para Chevrolet Aveo Sedán",
-        478
-      ],
-      [
-        "Ver planes de compra de las 4 versiones para Volkswagen Virtus",
-        432
-      ],
-      [
-        "¿Qué SUV de la lista tienen mensualidad menor a $5,000?",
-        375
-      ],
-      [
-        "¿Qué sedán del ranking me conviene?",
-        362
-      ],
-      [
-        "Ver planes de compra de las 5 versiones para Toyota Yaris Sedán",
-        313
-      ],
-      [
-        "Ver planes de compra de las 6 versiones para Mazda 2 Sedán",
-        307
-      ],
-      [
-        "¿Cuál es la mensualidad más baja para el MG MG5?",
-        268
-      ],
-      [
-        "Resumen rápido de ventajas y desventajas de undefined",
-        257
-      ],
-      [
-        "Ver planes de compra de las 4 versiones para MG MG5",
-        253
-      ],
-      [
-        "Ver planes de compra de las 3 versiones para Dodge ATTITUDE",
-        232
-      ]
-    ],
     "brands": [
       [
         "Nissan",
@@ -734,68 +610,6 @@
       [
         "价格/报价/库存/优惠",
         322
-      ]
-    ],
-    "questions": [
-      [
-        "Ver planes de compra de las 6 versiones para Nissan Versa",
-        1889
-      ],
-      [
-        "Analiza las ventajas y los principales atributos del MG MG5",
-        1528
-      ],
-      [
-        "Ver planes de compra de las 8 versiones para Kia K3 Sedán",
-        900
-      ],
-      [
-        "Ver planes de compra de las 3 versiones para Chevrolet Aveo Sedán",
-        700
-      ],
-      [
-        "¿Cuál de los 3 primeros autos me conviene más?",
-        692
-      ],
-      [
-        "Analiza las ventajas y los principales atributos del Changan EADO PLUS IDD",
-        671
-      ],
-      [
-        "Ver planes de compra de las 4 versiones para Volkswagen Virtus",
-        604
-      ],
-      [
-        "¿Qué sedán del ranking me conviene?",
-        536
-      ],
-      [
-        "Ver planes de compra de las 5 versiones para Toyota Yaris Sedán",
-        428
-      ],
-      [
-        "Ver planes de compra de las 6 versiones para Mazda 2 Sedán",
-        415
-      ],
-      [
-        "¿Qué SUV de la lista tienen mensualidad menor a $5,000?",
-        375
-      ],
-      [
-        "Ver planes de compra de las 4 versiones para MG MG5",
-        366
-      ],
-      [
-        "¿Cuál es la mensualidad más baja para el MG MG5?",
-        365
-      ],
-      [
-        "Resumen rápido de ventajas y desventajas de undefined",
-        341
-      ],
-      [
-        "Ver planes de compra de las 3 versiones para Dodge ATTITUDE",
-        303
       ]
     ],
     "brands": [

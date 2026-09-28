@@ -4,7 +4,7 @@
   var STORAGE_KEY = 'autocava.ai-report.browser-refresh.v1';
   var OWNER_MODE_KEY = 'autocava.ai-report.owner-mode.v1';
   var OWNER_MODE_TOKEN = '8f4c2a91';
-  var SNAPSHOT_VERSION = 4;
+  var SNAPSHOT_VERSION = 5;
   var FINANCE_FALLBACK_CUTOFF = Date.UTC(2026, 9, 7);
   var BRAND_CN = {
     Nissan: '日产（Nissan）', Kia: '起亚（Kia）', Chevrolet: '雪佛兰（Chevrolet）',
@@ -148,7 +148,7 @@
   function analyzeSession(sourceRows, period) {
     var rows = sourceRows.filter(function (row) { return inPeriod(row['用户消息时间(UTC-6)'], period); });
     if (!rows.length) throw new Error(fullLabel(period) + ' 的 AI 会话表按日期过滤后没有数据');
-    var sessionCounts = {}, userCounts = {}, durationBySession = {}, dailyMap = {}, intentRaw = {}, questionCounts = {};
+    var sessionCounts = {}, userCounts = {}, durationBySession = {}, dailyMap = {}, intentRaw = {};
     var financeFallbackOther = 0;
     var cardSessions = new Set(), hookSessions = new Set(), cardUsers = new Set();
     rows.forEach(function (row) {
@@ -163,8 +163,6 @@
       intentRaw[intent] = (intentRaw[intent] || 0) + 1;
       var intentTime = parseTimestamp(row['用户消息时间(UTC-6)']);
       if ((intent === '其他/空' || intent === '其他') && isFinite(intentTime) && intentTime < FINANCE_FALLBACK_CUTOFF) financeFallbackOther += 1;
-      var question = text(row['用户消息内容']);
-      if (question) questionCounts[question] = (questionCounts[question] || 0) + 1;
       var userTime = parseTimestamp(row['用户消息时间(UTC-6)']);
       var aiTime = parseTimestamp(row['AI消息时间(UTC-6)']);
       if (sid && isFinite(userTime)) {
@@ -199,8 +197,6 @@
       intents[0][1] += financeFallbackOther;
       intents[2][1] = Math.max(0, other - financeFallbackOther);
     }
-    var questions = Object.keys(questionCounts).map(function (key) { return [key, questionCounts[key]]; })
-      .sort(function (a, b) { return b[1] - a[1] || a[0].localeCompare(b[0]); }).slice(0, 15);
     var messagesText = rows.map(function (row) { return text(row['用户消息内容']); });
     var demand = KEYWORDS.map(function (item) { return [item[0], messagesText.filter(function (value) { return item[1].test(value); }).length]; });
     var cards = parseCards(rows);
@@ -217,7 +213,7 @@
       avgDuration: durations.length ? durations.reduce(function (a, b) { return a + b; }, 0) / durations.length : 0,
       reachSessions: cardSessions.size, leadSessions: hookSessions.size,
       multiSessions: depth[1][1] + depth[2][1] + depth[3][1], intents: intents, depth: depth,
-      demand: demand, questions: questions, brands: cards.brands, series: cards.series, models: cards.models, daily: daily
+      demand: demand, brands: cards.brands, series: cards.series, models: cards.models, daily: daily
     };
   }
 
@@ -307,33 +303,6 @@
     var max = Math.max.apply(null, sorted.map(function (item) { return item[1]; }).concat([1]));
     return sorted.map(function (item, index) {
       return '<tr><td>' + (index + 1) + '</td><td style="text-align:left">' + esc(item[0]) + '</td><td class="hl">' + fmt(item[1]) + '</td><td>' + pct(item[1], stats.messages).toFixed(1) + '%</td><td><div class="mini-track"><div class="mini-fill" style="width:' + pct(item[1], max) + '%;background:var(--s1)"></div></div></td></tr>';
-    }).join('');
-  }
-
-  function questionJudge(question) {
-    var fixedEntries = [
-      [/^Ver planes de compra de las? \d+ versiones? para .+$/i, '购车方案入口'],
-      [/^Analiza las ventajas y los principales atributos del .+$/i, '车型分析入口'],
-      [/^¿Cuál de los \d+ primeros autos me conviene más\??$/i, '车型比较入口'],
-      [/^¿Qué sed[aá]n del ranking me conviene\??$/i, '车型推荐入口'],
-      [/^¿Qué SUVs? de la lista (?:cuestan menos de|tienen mensualidad menor a) \$?[\d,.]+\??$/i, '预算筛选入口'],
-      [/^¿Cuál es la mensualidad más baja para el .+\??$/i, '月供入口'],
-      [/^Resumen rápido de ventajas y desventajas de .+$/i, '车型总结入口']
-    ];
-    for (var i = 0; i < fixedEntries.length; i += 1) {
-      if (fixedEntries[i][0].test(question)) {
-        var warning = /\bundefined\b/i.test(question) ? '（车型参数异常）' : '';
-        return '<span class="tag">已命中</span>' + fixedEntries[i][1] + warning;
-      }
-    }
-    if (/mensualidad|enganche|cr[eé]dito|financ|banco|pr[eé]stamo/i.test(question)) return '<span class="tag">部分命中</span>金融场景相似问题';
-    if (/plan|conviene|atributos|versi[oó]n|compar|auto|carro|suv|sed[aá]n/i.test(question)) return '<span class="tag">部分命中</span>选车/方案相似问题';
-    return '<span class="tag gap">需核对</span>入口/手打待拆分';
-  }
-
-  function questionRows(stats) {
-    return stats.questions.map(function (item, index) {
-      return '<tr><td>' + (index + 1) + '</td><td style="text-align:left">' + esc(item[0]) + '</td><td>' + fmt(item[1]) + '</td><td><div class="match">' + questionJudge(item[0]) + '</div></td></tr>';
     }).join('');
   }
 
@@ -458,20 +427,18 @@
 
     var dynamic = {
       demand: { current: demandRows(second), previous: demandRows(first) },
-      questions: { current: questionRows(second), previous: questionRows(first) },
       vehicle: {
         current: { brand: vehicleRows(second.brands, second.sessions, true), series: vehicleRows(second.series, second.sessions), model: vehicleRows(second.models, second.sessions) },
         previous: { brand: vehicleRows(first.brands, first.sessions, true), series: vehicleRows(first.series, first.sessions), model: vehicleRows(first.models, first.sessions) }
       }
     };
-    setNodeHtml('demandBody', dynamic.demand.current); setNodeHtml('questionBody', dynamic.questions.current);
+    setNodeHtml('demandBody', dynamic.demand.current);
     setNodeHtml('vehicleBrandBody', dynamic.vehicle.current.brand); setNodeHtml('vehicleSeriesBody', dynamic.vehicle.current.series); setNodeHtml('vehicleModelBody', dynamic.vehicle.current.model);
     function bindDynamicTabs(tabId, render) {
       var tabs = document.getElementById(tabId); if (!tabs) return;
       tabs.addEventListener('click', function (event) { var button = event.target.closest('button[data-view]'); if (!button) return; setTimeout(function () { render(button.getAttribute('data-view')); }, 0); });
     }
     bindDynamicTabs('demandTabs', function (view) { setNodeHtml('demandBody', dynamic.demand[view] || ''); });
-    bindDynamicTabs('questionTabs', function (view) { setNodeHtml('questionBody', dynamic.questions[view] || ''); });
     bindDynamicTabs('vehicleTabs', function (view) { var data = dynamic.vehicle[view] || {}; setNodeHtml('vehicleBrandBody', data.brand || ''); setNodeHtml('vehicleSeriesBody', data.series || ''); setNodeHtml('vehicleModelBody', data.model || ''); });
 
     var coverage = findSection('指标覆盖情况');
@@ -576,6 +543,25 @@
     if (mask) mask.remove();
   }
 
+  function removeQuestionSection() {
+    var section = findSection('高频用户主动问题');
+    if (section) section.remove();
+    var vehicleSection = findSection('车型关注分析');
+    if (vehicleSection) {
+      var vehicleKicker = vehicleSection.querySelector('.kicker');
+      var vehicleNo = vehicleSection.querySelector('.no');
+      if (vehicleKicker) vehicleKicker.textContent = 'Section 05 · Vehicle';
+      if (vehicleNo) vehicleNo.textContent = '05';
+    }
+    var coverageSection = findSection('指标覆盖情况');
+    if (coverageSection) {
+      var coverageKicker = coverageSection.querySelector('.kicker');
+      var coverageNo = coverageSection.querySelector('.no');
+      if (coverageKicker) coverageKicker.textContent = 'Section 06 · Coverage';
+      if (coverageNo) coverageNo.textContent = '06';
+    }
+  }
+
   async function restorePublished() {
     try {
       var response = await fetch('../data/ai-report-snapshot.json', { cache: 'no-store' });
@@ -591,11 +577,12 @@
   }
 
   async function start() {
+    removeQuestionSection();
     var ownerMode = isOwnerMode();
     if (ownerMode) installUi(); else hidePublicUpload();
     await restorePublished();
     if (ownerMode) restoreSaved();
   }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', start); else start();
-  window.__AIReportRefresh = { parsePeriod: parsePeriod, parseTimestamp: parseTimestamp, analyzeSession: analyzeSession, analyzeLeads: analyzeLeads, buildSnapshot: buildSnapshot, applySnapshot: applySnapshot, chartSvg: chartSvg, isOwnerMode: isOwnerMode, questionJudge: questionJudge };
+  window.__AIReportRefresh = { parsePeriod: parsePeriod, parseTimestamp: parseTimestamp, analyzeSession: analyzeSession, analyzeLeads: analyzeLeads, buildSnapshot: buildSnapshot, applySnapshot: applySnapshot, chartSvg: chartSvg, isOwnerMode: isOwnerMode };
 })();
