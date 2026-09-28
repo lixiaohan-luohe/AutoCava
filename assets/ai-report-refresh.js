@@ -2,7 +2,8 @@
   'use strict';
 
   var STORAGE_KEY = 'autocava.ai-report.browser-refresh.v1';
-  var SNAPSHOT_VERSION = 2;
+  var SNAPSHOT_VERSION = 3;
+  var FINANCE_FALLBACK_CUTOFF = Date.UTC(2026, 9, 7);
   var BRAND_CN = {
     Nissan: '日产（Nissan）', Kia: '起亚（Kia）', Chevrolet: '雪佛兰（Chevrolet）',
     Volkswagen: '大众（Volkswagen）', MG: '名爵（MG）', Mazda: '马自达（Mazda）',
@@ -62,9 +63,6 @@
   function short(day) { return iso(day).slice(5); }
   function rowLabel(period) { return short(period.start) + '~' + short(period.end); }
   function fullLabel(period) { return iso(period.start) + ' 至 ' + iso(period.end); }
-  function mergeOtherIntoFinanceForPeriod(period) {
-    return iso(period.start) === '2026-09-14' && iso(period.end) === '2026-09-20';
-  }
 
   async function rowsFromFile(file) {
     var workbook = XLSX.read(await file.arrayBuffer(), { type: 'array', cellDates: true });
@@ -145,10 +143,11 @@
     return { brands: topSets(brands), series: topSets(series), models: topSets(models) };
   }
 
-  function analyzeSession(sourceRows, period, mergeOtherIntoFinance) {
+  function analyzeSession(sourceRows, period) {
     var rows = sourceRows.filter(function (row) { return inPeriod(row['用户消息时间(UTC-6)'], period); });
     if (!rows.length) throw new Error(fullLabel(period) + ' 的 AI 会话表按日期过滤后没有数据');
     var sessionCounts = {}, userCounts = {}, durationBySession = {}, dailyMap = {}, intentRaw = {}, questionCounts = {};
+    var financeFallbackOther = 0;
     var cardSessions = new Set(), hookSessions = new Set(), cardUsers = new Set();
     rows.forEach(function (row) {
       var sid = text(row['会话ID']);
@@ -160,6 +159,8 @@
       if (uid && cardTouched(row)) cardUsers.add(uid);
       var intent = text(row['用户意图']) || '其他/空';
       intentRaw[intent] = (intentRaw[intent] || 0) + 1;
+      var intentTime = parseTimestamp(row['用户消息时间(UTC-6)']);
+      if ((intent === '其他/空' || intent === '其他') && isFinite(intentTime) && intentTime < FINANCE_FALLBACK_CUTOFF) financeFallbackOther += 1;
       var question = text(row['用户消息内容']);
       if (question) questionCounts[question] = (questionCounts[question] || 0) + 1;
       var userTime = parseTimestamp(row['用户消息时间(UTC-6)']);
@@ -192,7 +193,10 @@
     ];
     var other = (intentRaw['其他/空'] || 0) + (intentRaw['其他'] || 0);
     var intents = [['金融', intentRaw['金融'] || 0], ['选车', intentRaw['选车'] || 0], ['其他/空', other]];
-    if (mergeOtherIntoFinance) { intents[0][1] += other; intents[2][1] = 0; }
+    if (financeFallbackOther > 0) {
+      intents[0][1] += financeFallbackOther;
+      intents[2][1] = Math.max(0, other - financeFallbackOther);
+    }
     var questions = Object.keys(questionCounts).map(function (key) { return [key, questionCounts[key]]; })
       .sort(function (a, b) { return b[1] - a[1] || a[0].localeCompare(b[0]); }).slice(0, 15);
     var messagesText = rows.map(function (row) { return text(row['用户消息内容']); });
@@ -263,11 +267,15 @@
     requireColumns(secondSessionRows, sessionRequired, files[1].name);
     requireColumns(firstLeadRows, leadRequired, files[2].name);
     requireColumns(secondLeadRows, leadRequired, files[3].name);
-    var first = analyzeSession(firstSessionRows, firstPeriod, mergeOtherIntoFinanceForPeriod(firstPeriod));
-    var second = analyzeSession(secondSessionRows, secondPeriod, mergeOtherIntoFinanceForPeriod(secondPeriod));
+    var first = analyzeSession(firstSessionRows, firstPeriod);
+    var second = analyzeSession(secondSessionRows, secondPeriod);
     var firstLeads = analyzeLeads(firstLeadRows, firstPeriod, first);
     var secondLeads = analyzeLeads(secondLeadRows, secondPeriod, second);
-    var combined = analyzeSession(first.rows.concat(second.rows), { start: firstPeriod.start, end: secondPeriod.end }, false);
+    var combined = analyzeSession(first.rows.concat(second.rows), { start: firstPeriod.start, end: secondPeriod.end });
+    var firstIntentMap = rowMap(first.intents), secondIntentMap = rowMap(second.intents);
+    combined.intents = ['金融', '选车', '其他/空'].map(function (name) {
+      return [name, (firstIntentMap[name] || 0) + (secondIntentMap[name] || 0)];
+    });
     return {
       version: SNAPSHOT_VERSION, createdAt: new Date().toISOString(),
       files: files.map(function (file) { return file.name; }),
