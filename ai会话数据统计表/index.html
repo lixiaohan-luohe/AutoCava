@@ -368,5 +368,7 @@
     document.querySelectorAll('[data-upload-step]').forEach(function(input){input.addEventListener('change',function(){var card=input.closest('.upload-card');if(card&&input.files&&input.files[0]){card.style.borderStyle='solid';card.querySelector('label').textContent=card.querySelector('label').textContent.replace(/ · 已选择.*/,'')+' · 已选择';}});});
   })();
 </script>
+<script src="../assets/xlsx.full.min.js"></script>
+<script src="../assets/ai-report-refresh.js"></script>
 </body>
 </html>
