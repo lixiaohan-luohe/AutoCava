@@ -2,7 +2,7 @@
   'use strict';
 
   var STORAGE_KEY = 'autocava.ai-report.browser-refresh.v1';
-  var SNAPSHOT_VERSION = 1;
+  var SNAPSHOT_VERSION = 2;
   var BRAND_CN = {
     Nissan: '日产（Nissan）', Kia: '起亚（Kia）', Chevrolet: '雪佛兰（Chevrolet）',
     Volkswagen: '大众（Volkswagen）', MG: '名爵（MG）', Mazda: '马自达（Mazda）',
