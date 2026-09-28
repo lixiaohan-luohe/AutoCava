@@ -2,6 +2,8 @@
   'use strict';
 
   var STORAGE_KEY = 'autocava.ai-report.browser-refresh.v1';
+  var OWNER_MODE_KEY = 'autocava.ai-report.owner-mode.v1';
+  var OWNER_MODE_TOKEN = '8f4c2a91';
   var SNAPSHOT_VERSION = 4;
   var FINANCE_FALLBACK_CUTOFF = Date.UTC(2026, 9, 7);
   var BRAND_CN = {
@@ -531,7 +533,25 @@
   }
 
   function isOwnerMode() {
-    return location.protocol === 'file:' || location.hostname === 'localhost' || location.hostname === '127.0.0.1';
+    var isLocal = location.protocol === 'file:' || location.hostname === 'localhost' || location.hostname === '127.0.0.1';
+    if (isLocal) return true;
+    try {
+      var url = new URL(location.href);
+      var manage = url.searchParams.get('manage');
+      if (manage === OWNER_MODE_TOKEN) {
+        localStorage.setItem(OWNER_MODE_KEY, 'enabled');
+        url.searchParams.delete('manage');
+        if (window.history && window.history.replaceState) window.history.replaceState(null, '', url.pathname + url.search + url.hash);
+        return true;
+      }
+      if (manage === 'off') {
+        localStorage.removeItem(OWNER_MODE_KEY);
+        return false;
+      }
+      return localStorage.getItem(OWNER_MODE_KEY) === 'enabled';
+    } catch (error) {
+      return false;
+    }
   }
 
   function hidePublicUpload() {
@@ -562,5 +582,5 @@
     if (ownerMode) restoreSaved();
   }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', start); else start();
-  window.__AIReportRefresh = { parsePeriod: parsePeriod, parseTimestamp: parseTimestamp, analyzeSession: analyzeSession, analyzeLeads: analyzeLeads, buildSnapshot: buildSnapshot, applySnapshot: applySnapshot, chartSvg: chartSvg };
+  window.__AIReportRefresh = { parsePeriod: parsePeriod, parseTimestamp: parseTimestamp, analyzeSession: analyzeSession, analyzeLeads: analyzeLeads, buildSnapshot: buildSnapshot, applySnapshot: applySnapshot, chartSvg: chartSvg, isOwnerMode: isOwnerMode };
 })();
