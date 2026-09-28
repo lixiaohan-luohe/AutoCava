@@ -2,7 +2,7 @@
   'use strict';
 
   var STORAGE_KEY = 'autocava.ai-report.browser-refresh.v1';
-  var SNAPSHOT_VERSION = 3;
+  var SNAPSHOT_VERSION = 4;
   var FINANCE_FALLBACK_CUTOFF = Date.UTC(2026, 9, 7);
   var BRAND_CN = {
     Nissan: '日产（Nissan）', Kia: '起亚（Kia）', Chevrolet: '雪佛兰（Chevrolet）',
@@ -327,18 +327,26 @@
     }).join('');
   }
 
-  function chartSvg(daily, metric, colorClass, gradientId, guideId, aria) {
+  function chartSvg(daily, metric, colorClass, gradientId, guideId, aria, secondMetric, secondColorClass) {
     var width = 860, height = 320, left = 50, right = 16, top = 22, bottom = 36;
     var innerW = width - left - right, innerH = height - top - bottom;
     var values = daily.map(function (d) { return Number(d[metric]) || 0; });
-    var max = Math.max.apply(null, values.concat([1]));
+    var secondValues = secondMetric ? daily.map(function (d) { return Number(d[secondMetric]) || 0; }) : [];
+    var max = Math.max.apply(null, values.concat(secondValues, [1]));
     var xs = values.map(function (_, i) { return left + (values.length <= 1 ? innerW / 2 : innerW * i / (values.length - 1)); });
     var ys = values.map(function (v) { return top + innerH - innerH * v / max; });
     var points = xs.map(function (x, i) { return x.toFixed(1) + ',' + ys[i].toFixed(1); }).join(' ');
     var area = points + ' ' + (xs[xs.length - 1] || left) + ',' + (top + innerH) + ' ' + (xs[0] || left) + ',' + (top + innerH);
     var labels = daily.map(function (d, i) { return '<text class="xlab" x="' + xs[i].toFixed(1) + '" y="304">' + esc(i === 0 || d.day.slice(3) === '01' ? d.day : d.day.slice(3)) + '</text>'; }).join('');
     var circles = values.map(function (v, i) { return '<circle class="mk" cx="' + xs[i].toFixed(1) + '" cy="' + ys[i].toFixed(1) + '" r="3.5" fill="var(--' + colorClass + ')"/>'; }).join('');
-    return '<svg viewBox="0 0 860 320" role="img" aria-label="' + esc(aria) + '"><defs><linearGradient id="' + gradientId + '" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="var(--' + colorClass + ')"/><stop offset="1" stop-color="var(--' + colorClass + ')" stop-opacity="0"/></linearGradient></defs><polygon points="' + area + '" fill="url(#' + gradientId + ')" opacity=".18"/><polyline points="' + points + '" fill="none" stroke="var(--' + colorClass + ')" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/>' + circles + '<g>' + labels + '</g><line class="guide" id="' + guideId + '" x1="0" y1="14" x2="0" y2="284"/></svg>';
+    var secondMarkup = '';
+    if (secondValues.length) {
+      var secondYs = secondValues.map(function (v) { return top + innerH - innerH * v / max; });
+      var secondPoints = xs.map(function (x, i) { return x.toFixed(1) + ',' + secondYs[i].toFixed(1); }).join(' ');
+      var secondCircles = secondValues.map(function (v, i) { return '<circle class="mk" cx="' + xs[i].toFixed(1) + '" cy="' + secondYs[i].toFixed(1) + '" r="3.5" fill="var(--' + secondColorClass + ')"/>'; }).join('');
+      secondMarkup = '<polyline points="' + secondPoints + '" fill="none" stroke="var(--' + secondColorClass + ')" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/>' + secondCircles;
+    }
+    return '<svg viewBox="0 0 860 320" role="img" aria-label="' + esc(aria) + '"><defs><linearGradient id="' + gradientId + '" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="var(--' + colorClass + ')"/><stop offset="1" stop-color="var(--' + colorClass + ')" stop-opacity="0"/></linearGradient></defs><polygon points="' + area + '" fill="url(#' + gradientId + ')" opacity=".18"/><polyline points="' + points + '" fill="none" stroke="var(--' + colorClass + ')" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/>' + circles + secondMarkup + '<g>' + labels + '</g><line class="guide" id="' + guideId + '" x1="0" y1="14" x2="0" y2="284"/></svg>';
   }
 
   function bindChart(wrap, daily, lines) {
@@ -410,7 +418,7 @@
         var scope = firstCard.querySelector('.scope'); if (scope) scope.textContent = '每日消息数 vs 本地去重AI用户数';
         var legend = firstCard.querySelectorAll('.dcl .item'); if (legend[1]) legend[1].lastChild.textContent = '本地去重AI用户数';
         var oldWrap = firstCard.querySelector('#dcwrap');
-        if (oldWrap) { var newWrap = document.createElement('div'); newWrap.className = 'dcwrap'; newWrap.id = 'dcwrap'; newWrap.innerHTML = chartSvg(daily, 'messages', 's1', 'localGradMessages', 'localGuideMessages', '每日消息数趋势') + '<div class="dctip"></div>'; oldWrap.replaceWith(newWrap); bindChart(newWrap, daily, [{ color: 's1', label: '消息数', value: function (d) { return fmt(d.messages); } }, { color: 's3', label: '本地AI用户', value: function (d) { return fmt(d.users); } }]); }
+        if (oldWrap) { var newWrap = document.createElement('div'); newWrap.className = 'dcwrap'; newWrap.id = 'dcwrap'; newWrap.innerHTML = chartSvg(daily, 'messages', 's1', 'localGradMessages', 'localGuideMessages', '每日消息数与本地AI用户数趋势', 'users', 's3') + '<div class="dctip"></div>'; oldWrap.replaceWith(newWrap); bindChart(newWrap, daily, [{ color: 's1', label: '消息数', value: function (d) { return fmt(d.messages); } }, { color: 's3', label: '本地AI用户', value: function (d) { return fmt(d.users); } }]); }
       }
       var deepCard = dailySection.querySelector('#dcwrapDeep');
       if (deepCard) { var newDeep = document.createElement('div'); newDeep.className = 'dcwrap'; newDeep.id = 'dcwrapDeep'; newDeep.innerHTML = chartSvg(daily, 'deepPct', 's4', 'localGradDeep', 'localGuideDeep', '深度会话用户占比趋势') + '<div class="dctip"></div>'; deepCard.replaceWith(newDeep); bindChart(newDeep, daily, [{ color: 's4', label: '深度用户占比', value: function (d) { return d.deepPct.toFixed(1) + '%'; } }]); }
@@ -467,10 +475,11 @@
     }
 
     var footer = document.querySelector('footer.foot');
-    if (footer) footer.innerHTML = '<p><b>数据口径：</b>AI Session 消息数按日期区间内有效行计；会话数按“会话ID”去重；用户按“用户身份标识”去重。真实线索数为主线索表日期区间内记录行数；用户级线索闭环按 <code>UUID = 用户身份标识</code> 匹配。</p><p><b>数据来源：</b>' + snapshot.files.map(function (name) { return '<code>' + esc(name) + '</code>'; }).join('、') + '。</p><p><b>统计周期：</b>' + fullLabel(first.period) + '；' + fullLabel(second.period) + '。AI 会话表已按主线索表日期边界过滤，避免两周重叠。</p><p>AI 购车顾问 · 墨西哥市场 · 浏览器本地刷新 ' + esc(new Date(snapshot.createdAt).toLocaleString('zh-CN', { hour12: false })) + '</p>';
+    var isPublished = restored === 'published';
+    if (footer) footer.innerHTML = '<p><b>数据口径：</b>AI Session 消息数按日期区间内有效行计；会话数按“会话ID”去重；用户按“用户身份标识”去重。真实线索数为主线索表日期区间内记录行数；用户级线索闭环按 <code>UUID = 用户身份标识</code> 匹配。</p><p><b>数据来源：</b>' + snapshot.files.map(function (name) { return '<code>' + esc(name) + '</code>'; }).join('、') + '。</p><p><b>统计周期：</b>' + fullLabel(first.period) + '；' + fullLabel(second.period) + '。AI 会话表已按主线索表日期边界过滤，避免两周重叠。</p><p>AI 购车顾问 · 墨西哥市场 · ' + (isPublished ? '网站发布数据 ' : '浏览器本地刷新 ') + esc(new Date(snapshot.createdAt).toLocaleString('zh-CN', { hour12: false })) + '</p>';
 
     var status = document.getElementById('refreshStatus');
-    if (status) { status.textContent = restored ? '已恢复本机上次刷新结果' : '报告已刷新并保存在本浏览器'; status.className = 'refresh-status success'; }
+    if (status) { status.textContent = isPublished ? '已加载网站发布数据' : (restored ? '已恢复本机上次刷新结果' : '报告已刷新并保存在本浏览器'); status.className = 'refresh-status success'; }
     document.documentElement.setAttribute('data-local-report-refreshed', 'true');
   }
 
@@ -521,7 +530,37 @@
     } catch (error) { console.warn('Unable to restore local report snapshot', error); }
   }
 
-  function start() { installUi(); restoreSaved(); }
+  function isOwnerMode() {
+    return location.protocol === 'file:' || location.hostname === 'localhost' || location.hostname === '127.0.0.1';
+  }
+
+  function hidePublicUpload() {
+    var trigger = document.getElementById('openWizard');
+    if (trigger && trigger.parentElement) trigger.parentElement.style.display = 'none';
+    var mask = document.getElementById('wizardMask');
+    if (mask) mask.remove();
+  }
+
+  async function restorePublished() {
+    try {
+      var response = await fetch('../data/ai-report-snapshot.json', { cache: 'no-store' });
+      if (!response.ok) throw new Error('HTTP ' + response.status);
+      var snapshot = await response.json();
+      if (snapshot.version !== SNAPSHOT_VERSION) throw new Error('数据版本不匹配');
+      applySnapshot(snapshot, 'published');
+      return true;
+    } catch (error) {
+      console.warn('Unable to restore published report snapshot', error);
+      return false;
+    }
+  }
+
+  async function start() {
+    var ownerMode = isOwnerMode();
+    if (ownerMode) installUi(); else hidePublicUpload();
+    await restorePublished();
+    if (ownerMode) restoreSaved();
+  }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', start); else start();
-  window.__AIReportRefresh = { parsePeriod: parsePeriod, parseTimestamp: parseTimestamp, analyzeSession: analyzeSession, analyzeLeads: analyzeLeads, buildSnapshot: buildSnapshot, applySnapshot: applySnapshot };
+  window.__AIReportRefresh = { parsePeriod: parsePeriod, parseTimestamp: parseTimestamp, analyzeSession: analyzeSession, analyzeLeads: analyzeLeads, buildSnapshot: buildSnapshot, applySnapshot: applySnapshot, chartSvg: chartSvg };
 })();

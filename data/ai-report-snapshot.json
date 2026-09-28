@@ -1,0 +1,1126 @@
+{
+  "version": 4,
+  "createdAt": "2026-09-28T08:29:09.421Z",
+  "files": [
+    "2026-09-14至2026-09-21_AI会话记录_5722.xlsx",
+    "2026-09-21至2026-09-27_AI会话记录_833.xlsx",
+    "2026-09-14至2026-09-20_主线索表.xlsx",
+    "2026-09-21至2026-09-28_主线索表.xlsx"
+  ],
+  "first": {
+    "period": {
+      "start": 1789344000000,
+      "end": 1789862400000
+    },
+    "messages": 5676,
+    "sessions": 3806,
+    "users": 3525,
+    "avgTurns": 1.6102127659574468,
+    "avgDuration": 84.29611140304782,
+    "reachSessions": 2972,
+    "leadSessions": 2190,
+    "multiSessions": 910,
+    "intents": [
+      [
+        "金融",
+        2454
+      ],
+      [
+        "选车",
+        3222
+      ],
+      [
+        "其他/空",
+        0
+      ]
+    ],
+    "depth": [
+      [
+        "1轮",
+        2896
+      ],
+      [
+        "2轮",
+        482
+      ],
+      [
+        "3-5轮",
+        364
+      ],
+      [
+        "6轮以上",
+        64
+      ]
+    ],
+    "demand": [
+      [
+        "金融/贷款/融资",
+        1035
+      ],
+      [
+        "车型推荐/买什么",
+        4453
+      ],
+      [
+        "新能源/政策/新车/降价",
+        358
+      ],
+      [
+        "月供",
+        946
+      ],
+      [
+        "首付",
+        216
+      ],
+      [
+        "车型对比/哪个好",
+        124
+      ],
+      [
+        "预算/收入/贷款额度",
+        251
+      ],
+      [
+        "银行/方案对比",
+        0
+      ],
+      [
+        "价格/报价/库存/优惠",
+        112
+      ]
+    ],
+    "questions": [
+      [
+        "Ver planes de compra de las 6 versiones para Nissan Versa",
+        556
+      ],
+      [
+        "Analiza las ventajas y los principales atributos del MG MG5",
+        424
+      ],
+      [
+        "Ver planes de compra de las 8 versiones para Kia K3 Sedán",
+        226
+      ],
+      [
+        "Ver planes de compra de las 3 versiones para Chevrolet Aveo Sedán",
+        222
+      ],
+      [
+        "¿Qué SUVs de la lista cuestan menos de $5,000?",
+        217
+      ],
+      [
+        "¿Cuál de los 3 primeros autos me conviene más?",
+        208
+      ],
+      [
+        "¿Qué sedán del ranking me conviene?",
+        174
+      ],
+      [
+        "Ver planes de compra de las 4 versiones para Volkswagen Virtus",
+        172
+      ],
+      [
+        "Analiza las ventajas y los principales atributos del Changan EADO PLUS IDD",
+        153
+      ],
+      [
+        "Analiza las ventajas y los principales atributos del Changan ALSVIN",
+        146
+      ],
+      [
+        "Ver planes de compra de las 5 versiones para Toyota Yaris Sedán",
+        115
+      ],
+      [
+        "Ver planes de compra de las 4 versiones para MG MG5",
+        113
+      ],
+      [
+        "Ver planes de compra de las 6 versiones para Mazda 2 Sedán",
+        108
+      ],
+      [
+        "¿Cuál es la mensualidad más baja para el MG MG5?",
+        97
+      ],
+      [
+        "¿Cuál es la mensualidad más baja para el Changan EADO PLUS?",
+        89
+      ]
+    ],
+    "brands": [
+      [
+        "Nissan",
+        1128
+      ],
+      [
+        "MG",
+        693
+      ],
+      [
+        "Kia",
+        683
+      ],
+      [
+        "Chevrolet",
+        644
+      ],
+      [
+        "Volkswagen",
+        374
+      ],
+      [
+        "Changan",
+        261
+      ],
+      [
+        "Mazda",
+        231
+      ],
+      [
+        "Geely",
+        190
+      ],
+      [
+        "Toyota",
+        158
+      ],
+      [
+        "Hyundai",
+        99
+      ]
+    ],
+    "series": [
+      [
+        "Nissan Versa",
+        952
+      ],
+      [
+        "MG MG5",
+        660
+      ],
+      [
+        "Kia K3 Sedán",
+        633
+      ],
+      [
+        "Chevrolet Aveo Sedán",
+        564
+      ],
+      [
+        "Volkswagen Virtus",
+        354
+      ],
+      [
+        "Geely EMGRAND",
+        183
+      ],
+      [
+        "Changan ALSVIN",
+        162
+      ],
+      [
+        "Mazda 2 Sedán",
+        127
+      ],
+      [
+        "Toyota Yaris Sedán",
+        125
+      ],
+      [
+        "Renault KWID",
+        93
+      ]
+    ],
+    "models": [
+      [
+        "Nissan Versa SENSE BASE MT",
+        547
+      ],
+      [
+        "Nissan Versa ADVANCE CVT",
+        435
+      ],
+      [
+        "Nissan Versa SENSE CVT",
+        435
+      ],
+      [
+        "Nissan Versa SENSE MT",
+        435
+      ],
+      [
+        "Nissan Versa ADVANCE MT",
+        434
+      ],
+      [
+        "Nissan Versa EXCLUSIVE CVT",
+        416
+      ],
+      [
+        "Kia K3 Sedán L TM",
+        212
+      ],
+      [
+        "Chevrolet Aveo Sedán LS Manual",
+        208
+      ],
+      [
+        "Volkswagen Virtus Trendline TM",
+        167
+      ],
+      [
+        "Kia K3 Sedán EX TA",
+        136
+      ]
+    ],
+    "daily": [
+      {
+        "day": "09-14",
+        "messages": 250,
+        "users": 132,
+        "deepUsers": 47,
+        "deepPct": 35.6
+      },
+      {
+        "day": "09-15",
+        "messages": 313,
+        "users": 200,
+        "deepUsers": 50,
+        "deepPct": 25
+      },
+      {
+        "day": "09-16",
+        "messages": 381,
+        "users": 222,
+        "deepUsers": 74,
+        "deepPct": 33.3
+      },
+      {
+        "day": "09-17",
+        "messages": 843,
+        "users": 540,
+        "deepUsers": 122,
+        "deepPct": 22.6
+      },
+      {
+        "day": "09-18",
+        "messages": 1090,
+        "users": 714,
+        "deepUsers": 175,
+        "deepPct": 24.5
+      },
+      {
+        "day": "09-19",
+        "messages": 1046,
+        "users": 662,
+        "deepUsers": 182,
+        "deepPct": 27.5
+      },
+      {
+        "day": "09-20",
+        "messages": 1753,
+        "users": 1122,
+        "deepUsers": 296,
+        "deepPct": 26.4
+      }
+    ]
+  },
+  "second": {
+    "period": {
+      "start": 1789948800000,
+      "end": 1790553600000
+    },
+    "messages": 13613,
+    "sessions": 9405,
+    "users": 8613,
+    "avgTurns": 1.5805178218971323,
+    "avgDuration": 52.403189792663476,
+    "reachSessions": 7081,
+    "leadSessions": 4722,
+    "multiSessions": 2102,
+    "intents": [
+      [
+        "金融",
+        6427
+      ],
+      [
+        "选车",
+        7186
+      ],
+      [
+        "其他/空",
+        0
+      ]
+    ],
+    "depth": [
+      [
+        "1轮",
+        7303
+      ],
+      [
+        "2轮",
+        1175
+      ],
+      [
+        "3-5轮",
+        762
+      ],
+      [
+        "6轮以上",
+        165
+      ]
+    ],
+    "demand": [
+      [
+        "金融/贷款/融资",
+        2853
+      ],
+      [
+        "车型推荐/买什么",
+        10997
+      ],
+      [
+        "新能源/政策/新车/降价",
+        749
+      ],
+      [
+        "月供",
+        2540
+      ],
+      [
+        "首付",
+        563
+      ],
+      [
+        "车型对比/哪个好",
+        263
+      ],
+      [
+        "预算/收入/贷款额度",
+        472
+      ],
+      [
+        "银行/方案对比",
+        0
+      ],
+      [
+        "价格/报价/库存/优惠",
+        210
+      ]
+    ],
+    "questions": [
+      [
+        "Ver planes de compra de las 6 versiones para Nissan Versa",
+        1333
+      ],
+      [
+        "Analiza las ventajas y los principales atributos del MG MG5",
+        1104
+      ],
+      [
+        "Ver planes de compra de las 8 versiones para Kia K3 Sedán",
+        674
+      ],
+      [
+        "Analiza las ventajas y los principales atributos del Changan EADO PLUS IDD",
+        518
+      ],
+      [
+        "¿Cuál de los 3 primeros autos me conviene más?",
+        484
+      ],
+      [
+        "Ver planes de compra de las 3 versiones para Chevrolet Aveo Sedán",
+        478
+      ],
+      [
+        "Ver planes de compra de las 4 versiones para Volkswagen Virtus",
+        432
+      ],
+      [
+        "¿Qué SUV de la lista tienen mensualidad menor a $5,000?",
+        375
+      ],
+      [
+        "¿Qué sedán del ranking me conviene?",
+        362
+      ],
+      [
+        "Ver planes de compra de las 5 versiones para Toyota Yaris Sedán",
+        313
+      ],
+      [
+        "Ver planes de compra de las 6 versiones para Mazda 2 Sedán",
+        307
+      ],
+      [
+        "¿Cuál es la mensualidad más baja para el MG MG5?",
+        268
+      ],
+      [
+        "Resumen rápido de ventajas y desventajas de undefined",
+        257
+      ],
+      [
+        "Ver planes de compra de las 4 versiones para MG MG5",
+        253
+      ],
+      [
+        "Ver planes de compra de las 3 versiones para Dodge ATTITUDE",
+        232
+      ]
+    ],
+    "brands": [
+      [
+        "Nissan",
+        2680
+      ],
+      [
+        "Kia",
+        1747
+      ],
+      [
+        "Chevrolet",
+        1383
+      ],
+      [
+        "MG",
+        1305
+      ],
+      [
+        "Volkswagen",
+        816
+      ],
+      [
+        "Mazda",
+        645
+      ],
+      [
+        "Changan",
+        400
+      ],
+      [
+        "Geely",
+        390
+      ],
+      [
+        "Toyota",
+        385
+      ],
+      [
+        "Renault",
+        375
+      ]
+    ],
+    "series": [
+      [
+        "Nissan Versa",
+        2251
+      ],
+      [
+        "Kia K3 Sedán",
+        1589
+      ],
+      [
+        "MG MG5",
+        1190
+      ],
+      [
+        "Chevrolet Aveo Sedán",
+        1179
+      ],
+      [
+        "Volkswagen Virtus",
+        780
+      ],
+      [
+        "Geely EMGRAND",
+        378
+      ],
+      [
+        "Renault KWID",
+        370
+      ],
+      [
+        "Mazda 2 Sedán",
+        369
+      ],
+      [
+        "Toyota Yaris Sedán",
+        310
+      ],
+      [
+        "JAC Sei2 Flex",
+        298
+      ]
+    ],
+    "models": [
+      [
+        "Nissan Versa SENSE BASE MT",
+        1322
+      ],
+      [
+        "Nissan Versa ADVANCE CVT",
+        930
+      ],
+      [
+        "Nissan Versa SENSE CVT",
+        930
+      ],
+      [
+        "Nissan Versa ADVANCE MT",
+        929
+      ],
+      [
+        "Nissan Versa SENSE MT",
+        929
+      ],
+      [
+        "Kia K3 Sedán L TM",
+        665
+      ],
+      [
+        "Nissan Versa EXCLUSIVE CVT",
+        563
+      ],
+      [
+        "Volkswagen Virtus Trendline TM",
+        394
+      ],
+      [
+        "Chevrolet Aveo Sedán LS Manual",
+        376
+      ],
+      [
+        "Mazda 2 Sedán I TM",
+        298
+      ]
+    ],
+    "daily": [
+      {
+        "day": "09-21",
+        "messages": 2000,
+        "users": 1331,
+        "deepUsers": 317,
+        "deepPct": 23.8
+      },
+      {
+        "day": "09-22",
+        "messages": 1571,
+        "users": 997,
+        "deepUsers": 254,
+        "deepPct": 25.5
+      },
+      {
+        "day": "09-23",
+        "messages": 1484,
+        "users": 916,
+        "deepUsers": 221,
+        "deepPct": 24.1
+      },
+      {
+        "day": "09-24",
+        "messages": 1451,
+        "users": 886,
+        "deepUsers": 227,
+        "deepPct": 25.6
+      },
+      {
+        "day": "09-25",
+        "messages": 2253,
+        "users": 1519,
+        "deepUsers": 362,
+        "deepPct": 23.8
+      },
+      {
+        "day": "09-26",
+        "messages": 2208,
+        "users": 1412,
+        "deepUsers": 365,
+        "deepPct": 25.8
+      },
+      {
+        "day": "09-27",
+        "messages": 2646,
+        "users": 1707,
+        "deepUsers": 413,
+        "deepPct": 24.2
+      }
+    ]
+  },
+  "combined": {
+    "period": {
+      "start": 1789344000000,
+      "end": 1790553600000
+    },
+    "messages": 19289,
+    "sessions": 13211,
+    "users": 12063,
+    "avgTurns": 1.59902180220509,
+    "avgDuration": 61.591325410642646,
+    "reachSessions": 10053,
+    "leadSessions": 6912,
+    "multiSessions": 3012,
+    "intents": [
+      [
+        "金融",
+        8881
+      ],
+      [
+        "选车",
+        10408
+      ],
+      [
+        "其他/空",
+        0
+      ]
+    ],
+    "depth": [
+      [
+        "1轮",
+        10199
+      ],
+      [
+        "2轮",
+        1657
+      ],
+      [
+        "3-5轮",
+        1126
+      ],
+      [
+        "6轮以上",
+        229
+      ]
+    ],
+    "demand": [
+      [
+        "金融/贷款/融资",
+        3888
+      ],
+      [
+        "车型推荐/买什么",
+        15450
+      ],
+      [
+        "新能源/政策/新车/降价",
+        1107
+      ],
+      [
+        "月供",
+        3486
+      ],
+      [
+        "首付",
+        779
+      ],
+      [
+        "车型对比/哪个好",
+        387
+      ],
+      [
+        "预算/收入/贷款额度",
+        723
+      ],
+      [
+        "银行/方案对比",
+        0
+      ],
+      [
+        "价格/报价/库存/优惠",
+        322
+      ]
+    ],
+    "questions": [
+      [
+        "Ver planes de compra de las 6 versiones para Nissan Versa",
+        1889
+      ],
+      [
+        "Analiza las ventajas y los principales atributos del MG MG5",
+        1528
+      ],
+      [
+        "Ver planes de compra de las 8 versiones para Kia K3 Sedán",
+        900
+      ],
+      [
+        "Ver planes de compra de las 3 versiones para Chevrolet Aveo Sedán",
+        700
+      ],
+      [
+        "¿Cuál de los 3 primeros autos me conviene más?",
+        692
+      ],
+      [
+        "Analiza las ventajas y los principales atributos del Changan EADO PLUS IDD",
+        671
+      ],
+      [
+        "Ver planes de compra de las 4 versiones para Volkswagen Virtus",
+        604
+      ],
+      [
+        "¿Qué sedán del ranking me conviene?",
+        536
+      ],
+      [
+        "Ver planes de compra de las 5 versiones para Toyota Yaris Sedán",
+        428
+      ],
+      [
+        "Ver planes de compra de las 6 versiones para Mazda 2 Sedán",
+        415
+      ],
+      [
+        "¿Qué SUV de la lista tienen mensualidad menor a $5,000?",
+        375
+      ],
+      [
+        "Ver planes de compra de las 4 versiones para MG MG5",
+        366
+      ],
+      [
+        "¿Cuál es la mensualidad más baja para el MG MG5?",
+        365
+      ],
+      [
+        "Resumen rápido de ventajas y desventajas de undefined",
+        341
+      ],
+      [
+        "Ver planes de compra de las 3 versiones para Dodge ATTITUDE",
+        303
+      ]
+    ],
+    "brands": [
+      [
+        "Nissan",
+        3808
+      ],
+      [
+        "Kia",
+        2430
+      ],
+      [
+        "Chevrolet",
+        2027
+      ],
+      [
+        "MG",
+        1998
+      ],
+      [
+        "Volkswagen",
+        1190
+      ],
+      [
+        "Mazda",
+        876
+      ],
+      [
+        "Changan",
+        661
+      ],
+      [
+        "Geely",
+        580
+      ],
+      [
+        "Toyota",
+        543
+      ],
+      [
+        "Renault",
+        469
+      ]
+    ],
+    "series": [
+      [
+        "Nissan Versa",
+        3203
+      ],
+      [
+        "Kia K3 Sedán",
+        2222
+      ],
+      [
+        "MG MG5",
+        1850
+      ],
+      [
+        "Chevrolet Aveo Sedán",
+        1743
+      ],
+      [
+        "Volkswagen Virtus",
+        1134
+      ],
+      [
+        "Geely EMGRAND",
+        561
+      ],
+      [
+        "Mazda 2 Sedán",
+        496
+      ],
+      [
+        "Renault KWID",
+        463
+      ],
+      [
+        "Toyota Yaris Sedán",
+        435
+      ],
+      [
+        "Changan ALSVIN",
+        410
+      ]
+    ],
+    "models": [
+      [
+        "Nissan Versa SENSE BASE MT",
+        1869
+      ],
+      [
+        "Nissan Versa ADVANCE CVT",
+        1365
+      ],
+      [
+        "Nissan Versa SENSE CVT",
+        1365
+      ],
+      [
+        "Nissan Versa SENSE MT",
+        1364
+      ],
+      [
+        "Nissan Versa ADVANCE MT",
+        1363
+      ],
+      [
+        "Nissan Versa EXCLUSIVE CVT",
+        979
+      ],
+      [
+        "Kia K3 Sedán L TM",
+        877
+      ],
+      [
+        "Chevrolet Aveo Sedán LS Manual",
+        584
+      ],
+      [
+        "Volkswagen Virtus Trendline TM",
+        561
+      ],
+      [
+        "Kia K3 Sedán LX TM",
+        426
+      ]
+    ],
+    "daily": [
+      {
+        "day": "09-14",
+        "messages": 250,
+        "users": 132,
+        "deepUsers": 47,
+        "deepPct": 35.6
+      },
+      {
+        "day": "09-15",
+        "messages": 313,
+        "users": 200,
+        "deepUsers": 50,
+        "deepPct": 25
+      },
+      {
+        "day": "09-16",
+        "messages": 381,
+        "users": 222,
+        "deepUsers": 74,
+        "deepPct": 33.3
+      },
+      {
+        "day": "09-17",
+        "messages": 843,
+        "users": 540,
+        "deepUsers": 122,
+        "deepPct": 22.6
+      },
+      {
+        "day": "09-18",
+        "messages": 1090,
+        "users": 714,
+        "deepUsers": 175,
+        "deepPct": 24.5
+      },
+      {
+        "day": "09-19",
+        "messages": 1046,
+        "users": 662,
+        "deepUsers": 182,
+        "deepPct": 27.5
+      },
+      {
+        "day": "09-20",
+        "messages": 1753,
+        "users": 1122,
+        "deepUsers": 296,
+        "deepPct": 26.4
+      },
+      {
+        "day": "09-21",
+        "messages": 2000,
+        "users": 1331,
+        "deepUsers": 317,
+        "deepPct": 23.8
+      },
+      {
+        "day": "09-22",
+        "messages": 1571,
+        "users": 997,
+        "deepUsers": 254,
+        "deepPct": 25.5
+      },
+      {
+        "day": "09-23",
+        "messages": 1484,
+        "users": 916,
+        "deepUsers": 221,
+        "deepPct": 24.1
+      },
+      {
+        "day": "09-24",
+        "messages": 1451,
+        "users": 886,
+        "deepUsers": 227,
+        "deepPct": 25.6
+      },
+      {
+        "day": "09-25",
+        "messages": 2253,
+        "users": 1519,
+        "deepUsers": 362,
+        "deepPct": 23.8
+      },
+      {
+        "day": "09-26",
+        "messages": 2208,
+        "users": 1412,
+        "deepUsers": 365,
+        "deepPct": 25.8
+      },
+      {
+        "day": "09-27",
+        "messages": 2646,
+        "users": 1707,
+        "deepUsers": 413,
+        "deepPct": 24.2
+      }
+    ]
+  },
+  "firstLeads": {
+    "period": {
+      "start": 1789344000000,
+      "end": 1789862400000
+    },
+    "total": 32,
+    "uniqueMobile": 30,
+    "uniqueUuid": 30,
+    "matchedUsers": 25,
+    "matchedTurns": 100,
+    "matchedAvgTurns": 4,
+    "cardLeadUsers": 21,
+    "cardLeadRate": 0.75,
+    "aiTotal": 9,
+    "sourceTypes": [
+      [
+        "车系详情页",
+        10
+      ],
+      [
+        "25",
+        6
+      ],
+      [
+        "33",
+        4
+      ],
+      [
+        "车型成本页",
+        2
+      ],
+      [
+        "车型页",
+        2
+      ],
+      [
+        "26",
+        1
+      ]
+    ],
+    "dealers": [
+      [
+        "空",
+        31
+      ],
+      [
+        "Mazda Interlomas",
+        1
+      ]
+    ]
+  },
+  "secondLeads": {
+    "period": {
+      "start": 1789948800000,
+      "end": 1790553600000
+    },
+    "total": 56,
+    "uniqueMobile": 53,
+    "uniqueUuid": 48,
+    "matchedUsers": 38,
+    "matchedTurns": 117,
+    "matchedAvgTurns": 3.0789473684210527,
+    "cardLeadUsers": 33,
+    "cardLeadRate": 0.5,
+    "aiTotal": 6,
+    "sourceTypes": [
+      [
+        "车系详情页",
+        19
+      ],
+      [
+        "33",
+        7
+      ],
+      [
+        "40",
+        7
+      ],
+      [
+        "金融机构",
+        5
+      ],
+      [
+        "销售联系",
+        4
+      ],
+      [
+        "29",
+        3
+      ]
+    ],
+    "dealers": [
+      [
+        "空",
+        56
+      ]
+    ]
+  }
+}
