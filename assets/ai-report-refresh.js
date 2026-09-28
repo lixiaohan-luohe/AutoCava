@@ -311,8 +311,23 @@
   }
 
   function questionJudge(question) {
-    if (/mensualidad|enganche|cr[eé]dito|financ|banco|pr[eé]stamo/i.test(question)) return '<span class="tag">已命中</span>金融场景';
-    if (/plan|conviene|atributos|versi[oó]n|compar|auto|carro|suv|sed[aá]n/i.test(question)) return '<span class="tag">部分命中</span>选车/方案场景';
+    var fixedEntries = [
+      [/^Ver planes de compra de las? \d+ versiones? para .+$/i, '购车方案入口'],
+      [/^Analiza las ventajas y los principales atributos del .+$/i, '车型分析入口'],
+      [/^¿Cuál de los \d+ primeros autos me conviene más\??$/i, '车型比较入口'],
+      [/^¿Qué sed[aá]n del ranking me conviene\??$/i, '车型推荐入口'],
+      [/^¿Qué SUVs? de la lista (?:cuestan menos de|tienen mensualidad menor a) \$?[\d,.]+\??$/i, '预算筛选入口'],
+      [/^¿Cuál es la mensualidad más baja para el .+\??$/i, '月供入口'],
+      [/^Resumen rápido de ventajas y desventajas de .+$/i, '车型总结入口']
+    ];
+    for (var i = 0; i < fixedEntries.length; i += 1) {
+      if (fixedEntries[i][0].test(question)) {
+        var warning = /\bundefined\b/i.test(question) ? '（车型参数异常）' : '';
+        return '<span class="tag">已命中</span>' + fixedEntries[i][1] + warning;
+      }
+    }
+    if (/mensualidad|enganche|cr[eé]dito|financ|banco|pr[eé]stamo/i.test(question)) return '<span class="tag">部分命中</span>金融场景相似问题';
+    if (/plan|conviene|atributos|versi[oó]n|compar|auto|carro|suv|sed[aá]n/i.test(question)) return '<span class="tag">部分命中</span>选车/方案相似问题';
     return '<span class="tag gap">需核对</span>入口/手打待拆分';
   }
 
@@ -582,5 +597,5 @@
     if (ownerMode) restoreSaved();
   }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', start); else start();
-  window.__AIReportRefresh = { parsePeriod: parsePeriod, parseTimestamp: parseTimestamp, analyzeSession: analyzeSession, analyzeLeads: analyzeLeads, buildSnapshot: buildSnapshot, applySnapshot: applySnapshot, chartSvg: chartSvg, isOwnerMode: isOwnerMode };
+  window.__AIReportRefresh = { parsePeriod: parsePeriod, parseTimestamp: parseTimestamp, analyzeSession: analyzeSession, analyzeLeads: analyzeLeads, buildSnapshot: buildSnapshot, applySnapshot: applySnapshot, chartSvg: chartSvg, isOwnerMode: isOwnerMode, questionJudge: questionJudge };
 })();
